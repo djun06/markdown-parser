@@ -12,6 +12,7 @@ public class MarkdownParse {
         // find the next [, then find the ], then find the (, then read link upto next )
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
+            boolean isImage = false;
             int openBracket = markdown.indexOf("[", currentIndex);
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
@@ -19,7 +20,12 @@ public class MarkdownParse {
             if(openBracket == -1 || closeBracket == -1 || openParen == -1 || closeParen == -1){
                 break;
             }
-            toReturn.add(markdown.substring(openParen + 1, closeParen));
+            if(markdown.indexOf("!", currentIndex) == openBracket - 1){
+                isImage = true;
+            }
+            if(!isImage){
+                toReturn.add(markdown.substring(openParen + 1, closeParen));
+            }
             currentIndex = closeParen + 1;
         }
 
