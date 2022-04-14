@@ -23,8 +23,10 @@ public class MarkdownParse {
             if(markdown.indexOf("!", currentIndex) == openBracket - 1){
                 isImage = true;
             }
-            if(!isImage){
-                toReturn.add(markdown.substring(openParen + 1, closeParen));
+            if(closeBracket == openParen - 1){
+                if(!isImage){
+                    toReturn.add(markdown.substring(openParen + 1, closeParen));
+                }
             }
             currentIndex = closeParen + 1;
         }
