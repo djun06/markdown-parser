@@ -99,9 +99,4 @@ public class MarkdownParseTest {
         List<String> expected = List.of("https://osu.ppy.sh/");
         assertEquals(expected, MarkdownParse.getLinks(content));
     }
-
-    @Test
-    public void failingTest() {
-        assertEquals(1, 1 + 1);
-    }
 }
