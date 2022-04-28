@@ -20,13 +20,13 @@ public class MarkdownParse {
             if(openBracket == -1 || closeBracket == -1 || openParen == -1 || closeParen == -1){
                 break;
             }
-            //if(markdown.indexOf("!", currentIndex) == openBracket - 1 && openBracket != 0){
-            //    isImage = true;
-            //}
+            if(markdown.indexOf("!", currentIndex) == openBracket - 1 && openBracket != 0){
+                isImage = true;
+            }
             if(closeBracket == openParen - 1){
-            //    if(!isImage){
+                if(!isImage){
                     toReturn.add(markdown.substring(openParen + 1, closeParen));
-            //    }
+                }
             }
             currentIndex = closeParen + 1;
         }
